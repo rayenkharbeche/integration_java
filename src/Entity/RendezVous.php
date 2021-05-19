@@ -18,6 +18,7 @@ class RendezVous
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("post:read2")
      * @Groups("post:read")
      */
     private $id;
@@ -25,21 +26,21 @@ class RendezVous
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Champs Obligatoire")
-     * @Groups("post:read")
+     * @Groups("post:read2")
      */
     private $nomRDV;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\NotBlank(message="Champs Obligatoire")
-     * @Groups("post:read")
+     * @Groups("post:read2")
      */
     private $description;
 
     /**
      * @ORM\Column(type="datetime")
      * @Assert\NotBlank(message="Champs Obligatoire")
-     * @Groups("post:read")
+     * @Groups("post:read2")
      */
     private $dateRDV;
 
@@ -47,7 +48,7 @@ class RendezVous
 
     /**
      * @ORM\ManyToOne(targetEntity=Patient::class, inversedBy="rendezVous")
-     * @Groups("post:read")
+     * @Groups("post:read2")
      */
     private $patient;
 
@@ -56,14 +57,14 @@ class RendezVous
     /**
      * @ORM\ManyToOne(targetEntity=Planning::class, inversedBy="renders")
      * @ORM\JoinColumn(nullable = true)
-     * @Groups("post:read")
+     * @Groups("post:read2")
      */
     private $plannings;
 
     /**
      * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="rendezVouses")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups("post:read")
+     * @Groups("post:read2")
      */
     private $user;
 

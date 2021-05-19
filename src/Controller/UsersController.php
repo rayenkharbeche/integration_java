@@ -10,11 +10,16 @@ use App\Repository\UsersRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+
 use Symfony\Component\Routing\Annotation\Route;
 // Include Dompdf required namespaces
 use Dompdf\Dompdf;
 use Dompdf\Options;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 
 /**
@@ -134,9 +139,42 @@ class UsersController extends AbstractController
     }
 
     /**
+     * @Route("/newM", name="users_newM", methods={"GET","POST"})
+     *  @param Request $request
+     * @return JsonResponse
+     */
+    public function newM(Request $request): Response
+    {
+        $user = new Users();
+        $form = $this->createForm(UsersType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($user);
+            $entityManager->flush();
+            $serializer = new Serializer([new DateTimeNormalizer(), new ObjectNormalizer()]);
+            $formatted = $serializer->normalize([$user]);
+            return new JsonResponse($formatted);
+
+        }
+    }
+
+
+    /**
      * @Route("/{id}", name="users_show", methods={"GET"})
      */
     public function show(Users $user): Response
+    {
+        return $this->render('users/show.html.twig', [
+            'user' => $user,
+        ]);
+    }
+
+    /**
+     * @Route("/{email}", name="users_show1", methods={"GET"})
+     */
+    public function show1(Users $user): Response
     {
         return $this->render('users/show.html.twig', [
             'user' => $user,

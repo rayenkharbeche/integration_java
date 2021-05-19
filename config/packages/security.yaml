@@ -1,7 +1,10 @@
 security:
     encoders:
+
         App\Entity\Users:
-            algorithm: auto
+          algorithm: sha256
+          encode_as_base64: false
+          iterations: 1
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
@@ -47,9 +50,9 @@ security:
 
     role_hierarchy:
         ROLE_EDITOR: ROLE_USER
-        ROLE_ADMIN: [ ROLE_EDITOR, ROLE_PATIENT ]
+        ROLE_ADMIN: [ ROLE_EDITOR ]
 
-        ROLE_SECRETAIRE: ROLE_PATIENT
+       # ROLE_SECRETAIRE: ROLE_PATIENT
 
 
 

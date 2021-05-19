@@ -73,24 +73,34 @@
 
                 <div class="title">
                     <h1 class="h4">Soft Health</h1>
-                    <p>Admin</p>
+                    <p> {{ app.user.email }}<p>
+                    <p> {{ app.user.roles[0] }}<p>
                 </div>
             </div>
             <!-- Sidebar Navidation Menus-->
             <ul class="list-unstyled">
-                <li><a href="index.html"> <i class="icon-home"></i>Home </a></li>
-                <li class="active"><a href="{{ path('users_index') }}"> <i class="icon-grid"></i>Personnel </a></li>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li><a href="{{ path('adminB') }}"> <i class="icon-home"></i>Home </a></li>
+                {% endif %}
+                {% if is_granted('ROLE_PATIENT') %}
+                    <li><a href="{{ path('pati') }}"> <i class="icon-home"></i>Home </a></li>
+                {% endif %}
+                {% if is_granted('ROLE_MEDECIN') %}
+                    <li><a href="{{ path('MED') }}"> <i class="icon-home"></i>Home </a></li>
+                {% endif %}
+                {% if is_granted('ROLE_SECRETAIRE') %}
+                    <li><a href="{{ path('sec') }}"> <i class="icon-home"></i>Home </a></li>
+                {% endif %}
+                {% if is_granted('ROLE_PHARMACIEN') %}
+                    <li><a href="{{ path('phar') }}"> <i class="icon-home"></i>Home </a></li>
+                {% endif %}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li class="active"><a href="{{ path('users_index') }}"> <i class="icon-user"></i>Gestion personnels</a></li>
+                {% endif %}
+                <li ><a href="{{ path('patient_index') }}"> <i class="icon-user"></i>Gestion patient</a></li>
 
-                <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Inscription </a>
-                    <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-                        <li><a href="{{ path('app_register') }}">Medecin</a></li>
-                        <li><a href="{{ path('app_register') }}">Infermiere</a></li>
-                        <li><a href="{{ path('app_register') }}">Pharmacien</a></li>
-                        <li><a href="{{ path('app_register') }}">Secraitère</a></li>
-                    </ul>
-                </li>
-                <li><a href="{{ path('listReclamation') }}"> <i class="icon-mail"></i>Réclamation </a></li>
-                <li><a href="charts.html"> <i <i class="icon-screen"></i>Patient </a></li>
+
+                <li><a href="{{ path('listReclamation') }}"> <i class="icon-mail"></i>Gestion réclamation </a></li>
             </ul>
         </nav>
         <div class="content-inner">

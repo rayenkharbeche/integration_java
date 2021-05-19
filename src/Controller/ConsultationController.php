@@ -20,6 +20,9 @@ use Dompdf\Options;
  */
 class ConsultationController extends AbstractController
 {
+
+
+
     /**
      * @Route("/", name="consultation_index", methods={"GET"})
      */
@@ -39,8 +42,8 @@ class ConsultationController extends AbstractController
         $form=$this->createForm(RechercheDateType::class);
         $form->handleRequest($request);
         if ($form->isSubmitted()){
-            $dateC=$form->getData()->getDateC();
-            $dateResult=$this->getDoctrine()->getRepository(Consultation::class)->RechercheC($data);
+            $dateC=$form->getData()->getDateCreation();
+            $dateResult=$this->getDoctrine()->getRepository(Consultation::class)->RechercheC($dateC);
             return $this->render('consultation/trieCDate.html.twig',
                 array('consultationD'=>$dateResult, 'form'=>$form->createView()));
         }
@@ -59,7 +62,7 @@ class ConsultationController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted()){
             $numC=$form->getData()->getNumC();
-            $numCResult=$this->getDoctrine()->getRepository(Consultation::class)->RechercheN($data);
+            $numCResult=$this->getDoctrine()->getRepository(Consultation::class)->RechercheN();
             return $this->render('consultation/trieCnum.html.twig',
                 array('consultationN'=>$numCResult, 'form'=>$form->createView()));
 
@@ -67,9 +70,9 @@ class ConsultationController extends AbstractController
         return $this->render('consultation/trieCnum.html.twig',
             array('consultationN'=>$consultationN,'form' => $form->createView()));
     }
-   // /**
+    // /**
     // * @Route("/recherche", name="recherhce")
-     //*/
+    //*/
     /*public function recherche(Request $request){
         $search =$request->query->get('consultation');
         $repo = $this->getDoctrine()->getRepository(Consultation::class);
@@ -118,6 +121,7 @@ class ConsultationController extends AbstractController
         ]);
 
     }
+
     /**
      * @Route("/new", name="consultation_new", methods={"GET","POST"})
      */
@@ -146,20 +150,10 @@ class ConsultationController extends AbstractController
      */
     public function show(Consultation $consultation): Response
     {
-        $entityManager = $this->getDoctrine()->getManager();
-        $value = $consultation->getViews() ;
-        $value = $value + 1;
-        $consultation->setViews($value);
-
-        $entityManager->flush();
-
         return $this->render('consultation/show.html.twig', [
             'consultation' => $consultation,
         ]);
     }
-    
-
-
 
     /**
      * @Route("/{id}/edit", name="consultation_edit", methods={"GET","POST"})
@@ -181,11 +175,10 @@ class ConsultationController extends AbstractController
         ]);
     }
 
-    ///**
-     //* @Route("/{id}", name="consultation_delete", methods={"DELETE"})
-     //*/
-
-   /* public function delete(Request $request, Consultation $consultation): Response
+    /**
+     * @Route("/{id}", name="consultation_delete", methods={"POST"})
+     */
+    public function delete(Request $request, Consultation $consultation): Response
     {
         if ($this->isCsrfTokenValid('delete'.$consultation->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -194,18 +187,21 @@ class ConsultationController extends AbstractController
         }
 
         return $this->redirectToRoute('consultation_index');
-    }*/
-    /**
-     * @Route("/consultation_delete/{id}", name="consultation_delete")
-     */
-    public function consultation_delete($id)
-    {
-        $consultation = $this->getDoctrine()->getRepository(Consultation::class)->find($id);
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($consultation);
-        $em->flush();
-        return $this->redirectToRoute("consultation_index");
     }
+    ///**
+    //* @Route("/{id}", name="consultation_delete", methods={"DELETE"})
+    //*/
+
+    /* public function delete(Request $request, Consultation $consultation): Response
+     {
+         if ($this->isCsrfTokenValid('delete'.$consultation->getId(), $request->request->get('_token'))) {
+             $entityManager = $this->getDoctrine()->getManager();
+             $entityManager->remove($consultation);
+             $entityManager->flush();
+         }
+
+         return $this->redirectToRoute('consultation_index');
+     }*/
 
 
 

@@ -105,9 +105,9 @@ class Reclamation
 
         return $this;
     }
-    public function __toString()
-    {
-        return(string)$this->getType();
+   public function __toString()
+   {
+       return (string)$this->getType();
     }
 
 }

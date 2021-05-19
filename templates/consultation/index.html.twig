@@ -70,12 +70,39 @@
                     <div class="title">
                         <h1 class="h4">Soft Health</h1>
                         <p> {{ app.user.email }}</p>
+                        <p> {{ app.user.roles[0] }}<p>
                     </div>
                 </div>
                 <ul class="list-unstyled">
-                    <li><a href="{{ path('app_home') }}"> <i class="icon-home"></i>Home </a></li>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li><a href="{{ path('adminB') }}"> <i class="icon-home"></i>Home </a></li>
+                    {% endif %}
+                    {% if is_granted('ROLE_PATIENT') %}
+                        <li><a href="{{ path('pati') }}"> <i class="icon-home"></i>Home </a></li>
+                    {% endif %}
+                    {% if is_granted('ROLE_MEDECIN') %}
+                        <li><a href="{{ path('MED') }}"> <i class="icon-home"></i>Home </a></li>
+                    {% endif %}
+                    {% if is_granted('ROLE_SECRETAIRE') %}
+                        <li><a href="{{ path('sec') }}"> <i class="icon-home"></i>Home </a></li>
+                    {% endif %}
+                    {% if is_granted('ROLE_PHARMACIEN') %}
+                        <li><a href="{{ path('phar') }}"> <i class="icon-home"></i>Home </a></li>
+                    {% endif %}
                     <li ><a href="{{ path('patient_index') }}"> <i class="icon-user"></i>Patient </a></li>
-                    <li class="active" ><a href="{{ path('consultation_index') }}"> <i class="icon-padnote"></i>Consultation </a></li>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="active" ><a href="{{ path('consultation_index') }}"> <i class="icon-padnote"></i>Consultation </a></li>
+                        <li><a href="{{ path('gestion_renders') }}"> <i class="fa fa-bar-chart"></i>Rendez_Vous</a></li>
+                    {% endif %}
+                    {% if is_granted('ROLE_PATIENT') %}
+                        <li><a href="{{ path('rendez_vous_index') }}"> <i class="fa fa-bar-chart"></i>Rendez_Vous</a></li>
+                    {% endif %}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li ><a href="{{ path('categorie_index') }}"> <i class="icon-form"></i>Categorie du consultation </a></li>
+                    {% endif %}
+                    {% if is_granted('ROLE_SECRETAIRE') %}
+                        <li ><a href="{{ path('categorie_index') }}"> <i class="icon-form"></i>Categorie du consultation </a></li>
+                    {% endif %}
                     <li ><a href="{{ path('contact') }}"> <i class="icon-mail"></i>Contact</a></li>
 
                 </ul>
@@ -135,11 +162,11 @@
                                                 <input type="text" id="search" class="form-control" placeholder="Search">
                                               #}
                                                 <tr>
-                                                    <th>Id</th>
-                                                    <th>NumC</th>
-                                                    <th>DateC</th>
-                                                    <th>Text</th>
-                                                    <th>Patient</th>
+
+                                                    <th>Titre</th>
+                                                    <th>Date_creation</th>
+                                                    <th>Description</th>
+
                                                     <th>actions</th>
                                                 </tr>
                                                 </thead>
@@ -148,14 +175,14 @@
                                                 <tbody>
                                                 {% for consultation in consultations %}
                                                     <tr>
-                                                        <td>{{ consultation.id }}</td>
-                                                        <td>{{ consultation.numC }}</td>
-                                                        <td>{{ consultation.dateC ? consultation.dateC|date('Y-m-d') : '' }}</td>
-                                                        <td>{{ consultation.text }}</td>
-                                                        <td>{{ consultation.patient }}</td>
+
+                                                        <td>{{ consultation.titre }}</td>
+                                                        <td>{{ consultation.dateCreation }}</td>
+                                                        <td>{{ consultation.description }}</td>
+
                                                         <td>
-                                                            <button class="btn  btn-secondary"><a href="{{ path('consultation_show', {'id': consultation.id}) }}">show</a></button>
-                                                            <button class="btn  btn-secondary"><a href="{{ path('consultation_edit', {'id': consultation.id}) }}">edit</a></button>
+                                                            <a href="{{ path('consultation_show', {'id': consultation.id}) }}">show</a>
+                                                            <a href="{{ path('consultation_edit', {'id': consultation.id}) }}">edit</a>
                                                         </td>
                                                     </tr>
                                                 {% else %}

@@ -4,7 +4,6 @@ namespace App\Entity;
 
 use App\Repository\ConsultationRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ConsultationRepository::class)
@@ -19,99 +18,119 @@ class Consultation
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=255)
      */
-    private $numC;
-
-    /**
-     * @ORM\Column(type="date")
-     */
-    private $dateC;
+    private $titre;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $text;
+    private $date_creation;
+
     /**
-     * @ORM\OneToOne(targetEntity=Patient::class, cascade={"persist"})
+     * @ORM\Column(type="string", length=255)
      */
-    private $patient;
+    private $description;
+
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="integer")
      */
-    private $views;
+    private $nbr_vus;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="Categorie")
+     */
+    private $categorie;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="Users")
+     */
+    private $users;
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getNumC(): ?int
+    public function getTitre(): ?string
     {
-        return $this->numC;
+        return $this->titre;
     }
-
-    public function setNumC(int $numC): self
+    public function setId(string $id): self
     {
-        $this->numC = $numC;
+        $this->titre = $id;
+
+        return $this;
+    }
+    public function setTitre(string $titre): self
+    {
+        $this->titre = $titre;
 
         return $this;
     }
 
-    public function getDateC(): ?\DateTimeInterface
+    public function getDateCreation(): ?string
     {
-        return $this->dateC;
+        return $this->date_creation;
     }
 
-    public function setDateC(\DateTimeInterface $dateC): self
+    public function setDateCreation(string $date_creation): self
     {
-        $this->dateC = $dateC;
+        $this->date_creation = $date_creation;
 
         return $this;
     }
 
-    public function getText(): ?string
+    public function getDescription(): ?string
     {
-        return $this->text;
+        return $this->description;
     }
 
-    public function setText(string $text): self
+    public function setDescription(string $description): self
     {
-        $this->text = $text;
+        $this->description = $description;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getPatient()
+    public function getNbrVus(): ?int
     {
-        return $this->patient;
+        return $this->nbr_vus;
     }
 
-    /**
-     * @param mixed $patient
-     */
-    public function setPatient($patient): void
+    public function setNbrVus(int $nbr_vus): self
     {
-        $this->patient = $patient;
+        $this->nbr_vus = $nbr_vus;
+
+        return $this;
+    }
+
+    public function getCategorie(): ?Categorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Categorie $categorie): self
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    public function getUsers(): ?Users
+    {
+        return $this->users;
+    }
+
+    public function setUsers(?Users $users): self
+    {
+        $this->users = $users;
+
+        return $this;
     }
     public function __toString()
     {
-        return (string)$this->getPatient();
+        return (string)$this->getCategorie();
 
-    }
-
-
-    public function getViews(): ?int
-    {
-        return $this->views;
-    }
-
-    public function setViews(?int $views): self
-    {
-        $this->views = $views;
-
-        return $this;
     }
 }

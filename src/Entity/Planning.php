@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 
 /**
@@ -18,17 +19,21 @@ class Planning
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("post:read")
+     * @Groups("post:read2")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Champs Obligatoire")
+     * @Groups("post:read")
      */
     private $nomP;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups("post:read")
      */
     private $dateDebut;
 
@@ -38,11 +43,13 @@ class Planning
      *     "this.getDateDebut() < this.getDateFin()",
      *     message="La date fin ne doit pas être antérieure à la date début"
      * )
+     * @Groups("post:read")
      */
     private $dateFin;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("post:read")
      */
     private $descriptionP;
 
@@ -52,12 +59,14 @@ class Planning
      *     joinColumns={@ORM\JoinColumn(onDelete="CASCADE")},
      *     inverseJoinColumns={@ORM\JoinColumn(onDelete="CASCADE")}
      *     )
+     * @Groups("post:read")
      */
     private $renders;
 
     /**
      * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="plannings",cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
+     * @Groups("post:read")
      */
     private $personnel;
 
@@ -156,13 +165,13 @@ class Planning
 
 
 
-    public function getPersonnel(): ?User
+    public function getPersonnel(): ?Users
     {
         return $this->personnel;
     }
 
 
-    public function setPersonnel(?User $personnel): self
+    public function setPersonnel(?Users $personnel): self
     {
         $this->personnel = $personnel;
 

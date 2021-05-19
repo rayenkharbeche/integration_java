@@ -23,6 +23,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class PatientController extends AbstractController
 {
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/", name="patient_index", methods={"GET"})
      */
     public function index(PatientRepository $patientRepository): Response

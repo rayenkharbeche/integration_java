@@ -120,12 +120,28 @@
                     <div class="title">
                         <h1 class="h4">Soft Health</h1>
                         <p> {{ app.user.email }}</p>
-
+                        <p> {{ app.user.roles[0] }}<p>
                     </div>
                 </div>
                 <!-- Sidebar Navidation Menus-->
                 <ul class="list-unstyled">
-                    <li class="active"><a href="{{ path('app_home') }}"> <i class="icon-home"></i>Home </a></li>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li><a href="{{ path('adminB') }}"> <i class="icon-home"></i>Home </a></li>
+                    {% endif %}
+
+                    {% if is_granted('ROLE_MEDECIN') %}
+                        <li><a href="{{ path('med') }}"> <i class="icon-home"></i>Home </a></li>
+                    {% endif %}
+                    {% if is_granted('ROLE_SECRETAIRE') %}
+                        <li><a href="{{ path('sec') }}"> <i class="icon-home"></i>Home </a></li>
+                    {% endif %}
+                    {% if is_granted('ROLE_PHARMACIEN') %}
+                        <li><a href="{{ path('phar') }}"> <i class="icon-home"></i>Home </a></li>
+                    {% endif %}
+                    {% if is_granted('ROLE_PATIENT') %}
+                        <li><a href="{{ path('pati') }}"> <i class="icon-home"></i>Home </a></li>
+                    {% endif %}
+                    <li ><a href="{{ path('users_show', {'id': app.user.id}) }}"><i class="icon-list-1"> </i>vos infos</a></li>
                     <li ><a href="{{ path('gestion_cp') }}"> <i class="icon-show" ></i>Gestion planning </a></li>
                     <li ><a href="{{ path('medecin_index') }}"> <i class="fas fa-capsules"></i>Gestion médicaments </a></li>
                     <li ><a href="{{ path('ShowOrdo') }}"> <i class="fas fa-file-medical-alt""></i>Gestion ordonnances </a></li>

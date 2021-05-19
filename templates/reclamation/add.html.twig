@@ -72,23 +72,17 @@
                     <div class="title">
                         <h1 class="h4">Soft Health</h1>
                         <p> {{ app.user.email }}</p>
+                        <p> {{ app.user.roles[0] }}<p>
                     </div>
                 </div>
                 <!-- Sidebar Navidation Menus-->
                 <ul class="list-unstyled">
-                    <li><a href="{{ path('sec') }}"> <i class="icon-home"></i>Home </a></li>
-                    <li><a href="#"> <i class="icon-grid"></i>Personnel </a></li>
-                    <li><a href="#"> <i class="icon-grid"></i>Patient </a></li>
-                    <li class="active"><a href="#"> <i class="fa fa-bar-chart"></i>Planning </a></li>
-                    <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Example dropdown </a>
-                        <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-                            <li><a href="#">Medecin</a></li>
-                            <li><a href="#">Infermiere</a></li>
-                            <li><a href="#">Pharmacien</a></li>
-                            <li><a href="#">Secraitère</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#"> <i class="icon-interface-windows"></i>Login page </a></li>
+
+                    <li><a href="{{ path('reclamation') }}"> <i class="icon-home"></i>Home </a></li>
+                    <li class="active"><a href="{{ path('listReclamation') }}"> <i  class="icon-mail"></i>Réclamation </a></li>
+                    <li ><a href="{{ path('users_show', {'id': app.user.id}) }}"><i class="icon-list-1"> </i>vos infos</a></li>
+
+
 
                 </ul>
             </nav>

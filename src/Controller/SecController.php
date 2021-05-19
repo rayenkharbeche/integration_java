@@ -12,6 +12,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class SecController extends AbstractController
 {
     /**
+     * @IsGranted("ROLE_SECRETAIRE")
      * @Route("/sec", name="sec")
      */
     public function index(): Response

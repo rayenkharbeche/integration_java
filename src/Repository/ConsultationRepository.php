@@ -24,7 +24,7 @@ class ConsultationRepository extends ServiceEntityRepository
      */
     public function trieDate(){
         return $this->createQueryBuilder('c')
-            ->orderBy('c.dateC','ASC')
+            ->orderBy('c.date_creation','ASC')
             ->getQuery()
             ->getResult();
     }

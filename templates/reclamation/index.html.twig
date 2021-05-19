@@ -71,12 +71,13 @@
                     <div class="title">
                         <h1 class="h4">Soft Health</h1>
                         <p> {{ app.user.email }}</p>
+                        <p> {{ app.user.roles[0] }}<p>
                     </div>
                 </div>
                 <!-- Sidebar Navidation Menus-->
                 <ul class="list-unstyled">
-                    <li><a href="{{ path('app_home') }}"> <i class="icon-home"></i>Home </a></li>
-                    <li class="active"><a href="{{ path('listReclamation') }}"> <i  class="icon-mail"></i>Réclamation </a></li>
+                    <li ><a href="{{ path('reclamation') }}"> <i class="icon-home"></i>Home </a></li>
+                    <li ><a href="{{ path('listReclamation') }}"> <i  class="icon-mail"></i>Réclamation </a></li>
                   
                 </ul>
 

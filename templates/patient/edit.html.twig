@@ -77,7 +77,21 @@
                 </div>
                 <!-- Sidebar Navidation Menus-->
                 <ul class="list-unstyled">
-                    <li><a href="{{ path('app_home') }}"> <i class="icon-home"></i>Home </a></li>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li><a href="{{ path('adminB') }}"> <i class="icon-home"></i>Home </a></li>
+                    {% endif %}
+                    {% if is_granted('ROLE_PATIENT') %}
+                        <li><a href="{{ path('pati') }}"> <i class="icon-home"></i>Home </a></li>
+                    {% endif %}
+                    {% if is_granted('ROLE_MEDECIN') %}
+                        <li><a href="{{ path('MED') }}"> <i class="icon-home"></i>Home </a></li>
+                    {% endif %}
+                    {% if is_granted('ROLE_SECRETAIRE') %}
+                        <li><a href="{{ path('sec') }}"> <i class="icon-home"></i>Home </a></li>
+                    {% endif %}
+                    {% if is_granted('ROLE_PHARMACIEN') %}
+                        <li><a href="{{ path('phar') }}"> <i class="icon-home"></i>Home </a></li>
+                    {% endif %}
                     <li class="active"><a href="{{ path('patient_index') }}"> <i class="icon-user"></i>Patient </a></li>
                     <li ><a href="{{ path('consultation_index') }}"> <i class="icon-padnote"></i>Consultation </a></li>
                     <li ><a href="{{ path('contact') }}"> <i class="icon-mail"></i>Contact</a></li>

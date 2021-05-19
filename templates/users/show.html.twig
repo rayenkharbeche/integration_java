@@ -69,20 +69,31 @@
                 <div class="title">
                     <h1 class="h4">Soft Health</h1>
                     <p> {{ app.user.email }}</p>
+                    <p> {{ app.user.roles[0] }}<p>
                 </div>
             </div>
             <!-- Sidebar Navidation Menus-->
-            <ul class="list-unstyled">
-                <li><a href="index.html"> <i class="icon-home"></i>Home </a></li>
-                <ul class="list-unstyled">
-                    <li><a href="index.html"> <i class="icon-home"></i>Home </a></li>
-                    <li><a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Gestion personnels </a>
-                        <ul  class="collapse list-unstyled ">
-                            <li><a href="{{ path('users_index') }}">Détails personnels</a></li>
-                            <li ><a href="{{ path('users_new') }}">Ajouter personnel</a></li>
-                            <li><a href="#">Ajouter pharmacien</a></li>
 
-                        </ul>
+                <ul class="list-unstyled">
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li><a href="{{ path('adminB') }}"> <i class="icon-home"></i>Home </a></li>
+                    {% endif %}
+                    {% if is_granted('ROLE_PATIENT') %}
+                        <li><a href="{{ path('pati') }}"> <i class="icon-home"></i>Home </a></li>
+                    {% endif %}
+                    {% if is_granted('ROLE_MEDECIN') %}
+                        <li><a href="{{ path('MED') }}"> <i class="icon-home"></i>Home </a></li>
+                    {% endif %}
+                    {% if is_granted('ROLE_SECRETAIRE') %}
+                        <li><a href="{{ path('sec') }}"> <i class="icon-home"></i>Home </a></li>
+                    {% endif %}
+                    {% if is_granted('ROLE_PHARMACIEN') %}
+                        <li><a href="{{ path('phar') }}"> <i class="icon-home"></i>Home </a></li>
+                    {% endif %}
+                    <li class="active"><a href="{{ path('users_show', {'id': app.user.id}) }}"><i class="icon-list-1"></i>Détails personnels</a></li>
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <li ><a href="{{ path('users_new') }}"><i class="icon-list"></i>Ajouter personnel</a></li>
+                    {% endif %}
                     <li ><a href="{{ path('patient_index') }}"> <i class="icon-user"></i>Gestion patient</a></li>
                     <li><a href="{{ path('listReclamation') }}"> <i class="icon-mail"></i>Gestion réclamation </a></li>
             </ul>
@@ -148,11 +159,12 @@
         </tr>
         </tbody>
     </table>
-
-    <a href="{{ path('users_index') }}"> Retourner à la liste</a>
-
-
+<div>
+    <a href="{{ path('users_index') }}"> Back to list</a>
+                                        </div>
+<div>
     <a href="{{ path('users_edit', {'id': user.id}) }}">Modifier</a>
+</div>
                                             {% if is_granted('ROLE_ADMIN') %}
                                                 {{ include('users/_delete_form.html.twig') }}
                                             {% endif %}

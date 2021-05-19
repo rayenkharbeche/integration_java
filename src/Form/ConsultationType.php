@@ -18,28 +18,13 @@ class ConsultationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('numC',TextType::class,[
-                'attr' => [
-                    'placehelder' => " numéro",
-                    'class' => 'form-control'
-                ]
-            ])
-            ->add('dateC', DateTimeType::class, [
-                'date_widget' => 'single_text'
-            ])
 
-            ->add('patient',EntityType::class,[
-                'class'=>Patient::class,
-                'choice_label'=>'id',
 
-            ])
-            ->add('text',CKEditorType::class,[
-                'attr' => [
-                    'placehelder' => "Conseils",
-                    'class' => 'form-control'
-                ]
-            ])
-            ->add('patient');
+            ->add('titre')
+            ->add('date_creation')
+            ->add('description')
+            ->add('categorie')
+            ->add('users');
     }
 
     public function configureOptions(OptionsResolver $resolver)

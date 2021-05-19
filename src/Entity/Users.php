@@ -7,7 +7,9 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 
 /**
@@ -20,6 +22,8 @@ class Users implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("post:read2")
+     * @Groups("post:read")
      */
     private $id;
 
@@ -77,6 +81,46 @@ class Users implements UserInterface
      * @ORM\OneToMany(targetEntity=RendezVous::class, mappedBy="user")
      */
     private $rendezVouses;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $photo;
+/*
+
+     @Assert/File(maxSize="6000000")
+
+    public $file;
+
+
+
+
+      Get file
+
+      @return UploadedFile
+
+    public function getFile()
+    {
+        return $this->file;
+    }*/
+
+ /*
+     Sets file
+
+     @param UploadedFile $file
+
+    public function setFile(UploadedFile $file = null)
+    {
+        $this->file = $file;
+    }
+*/
+  /*  public function getAbsolutePath()
+    {
+        return null === $this->photo
+            ?null
+            : $this->getUploadRooDir().'/'.$this->photo;
+    }
+*/
 
     public function __construct()
     {
@@ -301,10 +345,61 @@ class Users implements UserInterface
     }
     public function __toString()
     {
-        return(string)$this->getRoles();
+        return (string)$this->getEmail();
+
 
     }
 
+    public function getPhoto(): ?string
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto(?string $photo): self
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
+   /* public function getWebPath()
+    {
+
+        return null === $this->photo
+            ?null
+            : $this->getUploadDir().'/'.$this->photo;
+    }
+
+    public function getUploadRooDir()
+    {
+        return __DIR__.'/../../piInteg1/public/'.$this->getUploadDir();
+    }
+
+    /*protected function getUploadRooDir()
+    {
+        //get
+        //when
+        return 'users_photo';
+    }*/
+
+/*public function  UploadProfilPictrure()
+{
+    //the file propriety can be empty if the field is not required
+    if(null === $this->getFile()){
+        return;
+    }
+    //user the original file name here but you should
+    //sanitize it at least to avoid any security issues
+    //move takes the target directory and then the target filename to move to
+    $this->getFile()->move(
+        $this->getUploadRootDir(),
+        $this->getFile()->getClientOriginalName()
+    );
+    //set the path prorerty to the filename shere you've saved  the file
+    $this->photo = $this->getFile()->getClientOriginalName();
+    //clean up the file property as you wwan't nees it anymore
+    $this->file = null;
+}*/
    
 }
 
