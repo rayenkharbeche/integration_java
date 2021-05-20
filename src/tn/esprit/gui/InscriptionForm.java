@@ -8,18 +8,13 @@ package tn.esprit.gui;
 import com.codename1.ui.Button;
 import com.codename1.ui.ComboBox;
 import com.codename1.ui.Container;
-import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
-import com.codename1.ui.Graphics;
-import com.codename1.ui.Image;
 import com.codename1.ui.Label;
 import com.codename1.ui.TextField;
-import com.codename1.ui.Toolbar;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
-import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.util.Resources;
 import tn.esprit.entities.User;
 import tn.esprit.services.UserService;
@@ -31,43 +26,6 @@ import tn.esprit.services.UserService;
 public class InscriptionForm extends Form {
 
     public InscriptionForm(Resources theme) {
-        
-        super(new BorderLayout());
-        Toolbar tb = getToolbar();
-        tb.setTitleCentered(false);
-        Image profilePic = theme.getImage("user-picture.jpg");
-        Image tintedImage = Image.createImage(profilePic.getWidth(), profilePic.getHeight());
-        Graphics g = tintedImage.getGraphics();
-        g.drawImage(profilePic, 0, 0);
-        g.drawImage(theme.getImage("gradient-overlay.png"), 0, 0, profilePic.getWidth(), profilePic.getHeight());
-
-        tb.getUnselectedStyle().setBgImage(tintedImage);
-        Button menuButton = new Button("");
-        menuButton.setUIID("Title");
-        FontImage.setMaterialIcon(menuButton, FontImage.MATERIAL_MENU);
-        menuButton.addActionListener(e -> getToolbar().openSideMenu());
-
-        Button settingsButton = new Button("");
-        settingsButton.setUIID("Title");
-        FontImage.setMaterialIcon(settingsButton, FontImage.MATERIAL_SETTINGS);
-        
-        Label space = new Label("", "TitlePictureSpace");
-        space.setShowEvenIfBlank(true);
-        Container titleComponent
-                = BorderLayout.north(
-                        BorderLayout.west(menuButton).add(BorderLayout.EAST, settingsButton)
-                ).
-                        add(BorderLayout.CENTER, space).
-                        add(BorderLayout.SOUTH,
-                                FlowLayout.encloseIn(
-                                        new Label("  New ", "WelcomeBlue"),
-                                        new Label("User", "WelcomeWhite")
-                                ));
-        titleComponent.setUIID("BottomPaddingContainer");
-        tb.setTitleComponent(titleComponent);
-         Label separator = new Label("", "BlueSeparatorLine");
-        separator.setShowEvenIfBlank(true);
-        add(BorderLayout.NORTH, separator);
         
         setTitle("Inscription");
         Label username = new Label("username");
