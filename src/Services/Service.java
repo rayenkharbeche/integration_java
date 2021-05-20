@@ -21,17 +21,10 @@ public class Service {
     public  ArrayList<Medicaments> getListBlog(Map m){
         ArrayList<Medicaments> listMedicaments = new ArrayList<>();
         ArrayList d = (ArrayList)m.get("Medicaments");
-        //System.out.println("roooooooooot "+d);
-        //Map f =  (Map) d.get(0);
-        //System.out.println("dddddddddddddd :::::::::"+d.size());
-
+        
         for(int i = 0; i<d.size();i++){
             Map f =  (Map) d.get(i);
             Medicaments p = new Medicaments();
-            
-            
-            
-            
             
             Double id = (Double) f.get("id");
             p.setId(id.intValue());
@@ -53,23 +46,9 @@ public class Service {
     public  ArrayList<String> getListCategories(Map m){
         ArrayList<String> listMedicaments = new ArrayList<>();
         ArrayList d = (ArrayList)m.get("Categories");
-        //System.out.println("roooooooooot "+d);
-        //Map f =  (Map) d.get(0);
-        //System.out.println("dddddddddddddd :::::::::"+d.size());
-
         for(int i = 0; i<d.size();i++){
             Map f =  (Map) d.get(i);
-            
-            
-            
-            
-            
-            
-           
-            
           
-            
-            
             listMedicaments.add((String)f.get("nom"));  
         }        
         return listMedicaments;
@@ -78,18 +57,11 @@ public class Service {
     public  ArrayList<Ordonnance> getListord(Map m){
         ArrayList<Ordonnance> listMedicaments = new ArrayList<>();
         ArrayList d = (ArrayList)m.get("Ordonnance");
-        //System.out.println("roooooooooot "+d);
-        //Map f =  (Map) d.get(0);
-        //System.out.println("dddddddddddddd :::::::::"+d.size());
 
         for(int i = 0; i<d.size();i++){
             Map f =  (Map) d.get(i);
             Ordonnance p = new Ordonnance();
-            
-            
-            
-            
-            
+       
             Double id = (Double) f.get("id");
             p.setId(id.intValue());
             Map medicament = ((Map) f.get("medicaments")) ;
@@ -121,11 +93,8 @@ public class Service {
     }
     public  ArrayList<String> getListConsultations(Map m){
         ArrayList<String> listMedicaments = new ArrayList<>();
-        //System.out.println(m);
         ArrayList d = (ArrayList)m.get("Consultation");
         System.out.println("roooooooooot "+m);
-        
-
         for(int i = 0; i<d.size();i++){
             Map f =  (Map) d.get(i);
             listMedicaments.add((Double)f.get("numC")+"");  
@@ -142,17 +111,6 @@ public class Service {
 
         for(int i = 0; i<d.size();i++){
             Map f =  (Map) d.get(i);
-            
-            
-            
-            
-            
-            
-           
-            
-          
-            
-            
             listMedicaments.add((String)f.get("nom"));  
         }        
         return listMedicaments;
@@ -161,23 +119,8 @@ public class Service {
     public  ArrayList<String> getListNotifications(Map m){
         ArrayList<String> listMedicaments = new ArrayList<>();
         ArrayList d = (ArrayList)m.get("Notifications");
-        //System.out.println("roooooooooot "+d);
-        //Map f =  (Map) d.get(0);
-        //System.out.println("dddddddddddddd :::::::::"+d.size());
-
         for(int i = 0; i<d.size();i++){
             Map f =  (Map) d.get(i);
-            
-            
-            
-            
-            
-            
-           
-            
-          
-            
-            
             listMedicaments.add((String)f.get("message"));  
         }        
         return listMedicaments;

@@ -95,12 +95,7 @@ public class ListMedicaments extends BaseForm{
                     MedicamentDetails.m = e;
                     MedicamentDetails md = new MedicamentDetails();
                     md.show();
-                    //ws.DeleteComment(e.getId());
-                    //ListPlaces lp = new ListPlaces();
-                    //lp.show();
-                   //EventDetails.e = e ;
-                   //EventDetails pd = new EventDetails();
-                   //pd.show();
+               
                 }
             });
         }

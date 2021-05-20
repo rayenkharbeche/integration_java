@@ -13,6 +13,7 @@ import com.codename1.ui.Button;
 import com.codename1.ui.Container;
 import com.codename1.ui.EncodedImage;
 import com.codename1.ui.FontImage;
+import com.codename1.ui.Form;
 import com.codename1.ui.Image;
 import com.codename1.ui.Label;
 import com.codename1.ui.events.ActionEvent;
@@ -30,6 +31,8 @@ import java.util.Map;
  * @author ASSOUMA
  */
 public class Home extends BaseForm{
+                     Form current;
+
     public Home(){
          setName("Home");
         setTitle("Home");
@@ -44,28 +47,40 @@ public class Home extends BaseForm{
             ap.show();
         });
             
-            Container photos = new Container(new BoxLayout(BoxLayout.Y_AXIS));
+            Container cont = new Container(new BoxLayout(BoxLayout.Y_AXIS));
            
-            Button Products = new Button("Espace Medicaments");
+            Button Medics = new Button("Espace Medicaments");
           
-            Button Events = new Button("Espace Ordonnances");
+            Button Ordo = new Button("Espace Ordonnances");
+             Button categ = new Button("Liste catégories "); 
+             Button cat = new Button("Ajouter catégories");
            
-            //Label c = new Label("Nombre d'heures : "+e.getNbheures()+"");
             
             
-            photos.add(Products);
-            photos.add(Events);
+            cont.add(Medics);
+            cont.add(Ordo);
+             cont.add(categ);
+            cont.add(cat);
             
-            add(photos);
+            add(cont);
             
-            Products.addActionListener(e->{
+            Medics.addActionListener(e->{
                 ListMedicaments lp = new ListMedicaments();
                 lp.show();
             });
-            Events.addActionListener(e->{
+            
+            Ordo.addActionListener(e->{
                 ListOrdonnances lp = new ListOrdonnances();
                 lp.show();
             });
+            
+             categ.addActionListener(e->{
+                ListCateg lp = new ListCateg();
+                lp.show();
+            }); 
+                 cat.addActionListener(e-> new AddCateg(current).show());
+
+             
            
                 
            
