@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/gui/ListOrdonnances.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/gui/ListMedicaments.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/gui/HomeForm.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/gui/MenuChambre.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/gui/AddOrdonnance.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/gui/Notifications.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/gui/OrdonnanceDetails.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/gui/ListCategory.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/gui/StatChambre.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/MyApplication.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/gui/ListCategories.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/gui/MedicamentDetails.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/gui/AjoutChambre.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/gui/Home.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/gui/EditCat.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/gui/ListChambre.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/gui/EditOrdonnance.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/entities/Users.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/gui/MenuCategoryChambre.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/gui/EditChambre.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/com/mycompany/myapp/MyApplication.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/gui/MenuCategory.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/gui/ListCham.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/gui/EditMedicament.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/utils/Statics.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/gui/HomePatientForm.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/utils/WebService.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/entities/Chambre.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/services/ServiceUser.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/gui/Listcat.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/utils/CurrentSession.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/gui/AddMedicament.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/services/Service.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/services/UserService.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/entities/User.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/services/ServiceChambre.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/services/ConsultationService.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/services/ServiceCategory.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/entities/Category.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/gui/AjoutCat.java</file>
+            <file>file:/C:/Users/rayen/Documents/NetBeansProjects/SprintMobileERR/src/tn/esprit/gui/ListUsers.java</file>
+        </group>
+    </open-files>
+</project-private>
